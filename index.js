@@ -45,20 +45,17 @@ const firstShoppingList = [
     },
 ];
 function sarasas(list) {
-    let item1 = firstShoppingList[0];
-    let item2 = firstShoppingList[1]
-    let item3 = firstShoppingList[2]
-    let line1 = 'Jūsų prekių krepšelyje yra ' + list.length + ' prekės:\n'
-     line1 += '----------------------------------------------------\n'
-     line1 += 'Pavadinimas | Kiekis | Vieneto kaina | Viso moketi\n'
-     line1 += '----------------------------------------------------\n'
-     line1 += `${item1.id }. ${item1.name} | ${item1.amount} vnt | ${item1.unitPrice} Eur ${item1.amount * item1.unitPrice / 100} Eur\n`; 
-     line1 += `${item2.id }. ${item2.name} | ${item2.amount} vnt | ${item2.unitPrice} Eur ${item2.amount * item2.unitPrice / 100} Eur\n`; 
-     line1 += `${item3.id }. ${item3.name} | ${item3.amount} vnt | ${item3.unitPrice} Eur ${item3.amount * item3.unitPrice / 100} Eur\n`; 
-     line1 += '----------------------------------------------------\n'
-      
+    
+    let line = '----------------------------------------------------------\n'
+        line += 'Pavadinimas  | Kiekis      | Vieneto kaina | Viso mokėti\n'
+        line += '---------------------------------------------------------\n'
+    for (let i = 0; i < list.length; i++) {
+        const item = list[i]
+        line += `${item.id}. ${item.name} | ${item.amount} vnt | ${item.unitPrice} Eur | ${item.amount * item.unitPrice/100} Eur\n`
+        }
+        line += '---------------------------------------------------------\n'
         
-    return line1
+    return line
 
 }
 
