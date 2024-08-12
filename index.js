@@ -12,18 +12,7 @@ Vienintelė išimtis, kada gali nesutapti spausdinamas rezultatas, jei kurdamas 
 --------------------------------------------------------
 */
 
-// const emptyList = [];
-
-// console.log(shoppingList(emptyList));
-// /*
-// Šiuo metu, jūsų prekių krepšelis yra tuščias.
-// */
-
-// console.log(productDetails(emptyList, 42069));
-// /*
-// Prekė, su ID: 42069 neegzistuoja.
-// */
-
+const emptyList = [];
 const firstShoppingList = [
     {
         id: 1,
@@ -44,116 +33,67 @@ const firstShoppingList = [
         unitPrice: 45,
     },
 ];
-function sarasas(list) {
-    
-    let line = '----------------------------------------------------------\n'
-        line += 'Pavadinimas  | Kiekis      | Vieneto kaina | Viso mokėti\n'
+function shoppingList(list) {
+    line = ''
+    if (Object.keys(list).length === 0) {
+        line = 'Šiuo metu, jūsų prekių krepšelis yra tuščias.\n';
+        
+    }else{
+
+     line += '----------------------------------------------------------\n'
+        line += 'Pavadinimas   | Kiekis      | Vieneto kaina | Viso mokėti\n'
         line += '---------------------------------------------------------\n'
     for (let i = 0; i < list.length; i++) {
         const item = list[i]
-        line += `${item.id}. ${item.name} | ${item.amount} vnt | ${item.unitPrice} Eur | ${item.amount * item.unitPrice/100} Eur\n`
+        line += `${item.id}. ${item.name.padEnd(10)} | ${item.amount.toString().padEnd(8)}vnt | ${item.unitPrice.toFixed(2)} Eur | ${(item.amount * item.unitPrice/100).toFixed(2)} Eur\n`
         }
         line += '---------------------------------------------------------\n'
-        
+    }
     return line
 
 }
 
-console.log(sarasas(firstShoppingList, ));
+console.log(shoppingList(firstShoppingList));
+console.log(shoppingList(emptyList));
+
+console.log(firstShoppingList);
 
 
-// console.log(firstShoppingList);
+function productDetails(a, b) {
+    const produktas = a.find(item => item.id === b);
+    if (!produktas) {
+        return `Prekė, su ID: ${b} neegzistuoja.`
+    }
+    let visoKaina = produktas.amount * produktas.unitPrice / 100
+    let vntKaina = produktas.unitPrice / 100
+    let line1 = '------------------------------------\n';
+        line1 += 'Prekes informacija\n';
+        line1 += '------------------------------------\n';
+        line1 += `ID          | ${produktas.id}\n`;
+        line1 += `Pavadinimas | ${produktas.name}\n`;
+        line1 += `Kiekis      | ${produktas.amount}\n`;
+        line1 += `vnt kaina   | ${vntKaina.toFixed(2)}\n`;
+        line1 += `Viso moketi | ${visoKaina.toFixed(2)}\n`;
+        line1 += '------------------------------------\n';
+   return line1 
+}
+
+console.log(productDetails(firstShoppingList, 1));
+console.log(productDetails(firstShoppingList, 42069));
+console.log(productDetails(firstShoppingList, 3));
+console.log(productDetails(firstShoppingList, 7));
 
 
-// console.log(shoppingList(firstShoppingList));
-/*
-Jūsų prekių krepšelyje yra 3 prekės:
------------------------------------------------------------
-Pavadinimas  | Kiekis      | Vieneto kaina | Viso mokėti
------------------------------------------------------------
-1. Pomidoras | 1000000 vnt | 1.99 Eur      | 1990000.00 Eur
-2. Agurkas   | 2 vnt       | 0.50 Eur      | 1.00 Eur
-3. Svogūnas  | 1 vnt       | 0.45 Eur      | 0.45 Eur
------------------------------------------------------------
-*/
+const singleProductShoppingList = [
+    {
+        id: 2,
+        name: 'Kivi',
+        amount: 23,
+        unitPrice: 14,
+    },
+];
 
-// console.log(productDetails(firstShoppingList, 42069));
-// /*
-// Prekė, su ID: 42069 neegzistuoja.
-// */
+console.log(shoppingList(singleProductShoppingList));
+console.log(productDetails(singleProductShoppingList, 42069));
+console.log(productDetails(singleProductShoppingList, 2));
 
-// console.log(productDetails(firstShoppingList, 1));
-// /*
-// ------------------------------
-// Prekės informacija
-// ------------------------------
-// ID            | 1
-// Pavadinimas   | Pomidoras
-// Kiekis        | 1000000 vnt
-// Vieneto kaina | 1.99 Eur
-// Viso mokėti   | 1990000.00 Eur
-// ------------------------------
-// */
-
-// console.log(productDetails(firstShoppingList, 3));
-// /*
-// ------------------------
-// Prekės informacija
-// ------------------------
-// ID            | 3
-// Pavadinimas   | Agurkas
-// Kiekis        | 2 vnt
-// Vieneto kaina | 0.50 Eur
-// Viso mokėti   | 1.00 Eur
-// ------------------------
-// */
-
-// console.log(productDetails(firstShoppingList, 7));
-// /*
-// ------------------------
-// Prekės informacija
-// ------------------------
-// ID            | 7
-// Pavadinimas   | Svogūnas
-// Kiekis        | 1 vnt
-// Vieneto kaina | 0.45 Eur
-// Viso mokėti   | 0.45 Eur
-// ------------------------
-// */
-
-// const singleProductShoppingList = [
-//     {
-//         id: 2,
-//         name: 'Kivi',
-//         amount: 23,
-//         unitPrice: 14,
-//     },
-// ];
-
-// console.log(shoppingList(singleProductShoppingList));
-// /*
-// Jūsų prekių krepšelyje yra 1 prekė:
-// --------------------------------------------------
-// Pavadinimas | Kiekis | Vieneto kaina | Viso mokėti
-// --------------------------------------------------
-// 1. Kivi     | 23 vnt | 0.14 Eur      | 3.22 Eur
-// --------------------------------------------------
-// */
-
-// console.log(productDetails(singleProductShoppingList, 42069));
-// /*
-// Prekė, su ID: 42069 neegzistuoja.
-// */
-
-// console.log(productDetails(singleProductShoppingList, 2));
-// /*
-// ------------------------
-// Prekės informacija
-// ------------------------
-// ID            | 2
-// Pavadinimas   | Kivi
-// Kiekis        | 23 vnt
-// Vieneto kaina | 0.14 Eur
-// Viso mokėti   | 3.22 Eur
-// ------------------------
-// */
