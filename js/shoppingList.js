@@ -3,7 +3,10 @@ export function shoppingList(list) {
     if (Object.keys(list).length === 0) {
         line = 'Šiuo metu, jūsų prekių krepšelis yra tuščias.\n';
         
-    }else{
+    }else{if (Object.keys(list).length === 1) {
+        line = 'Jūsų prekių krepšelyje yra ' + list.length + ' prekė:\n'
+        
+    }else
         line = 'Jūsų prekių krepšelyje yra ' + list.length + ' prekės:\n'
         line += '------------------------------------------------------------\n'
         line += 'Pavadinimas    |      Kiekis | Vieneto kaina | Viso mokėti\n'
