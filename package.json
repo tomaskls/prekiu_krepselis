@@ -6,8 +6,7 @@
     "index": "node --watch ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "type": "module",
-  "keywords": [],
+    "keywords": [],
   "author": "Tomas https://github.com/tomaskls",
   "license": "ISC",
   "description": ""

@@ -1,6 +1,6 @@
 import { shoppingList } from "./js/shoppingList.js";
 import { productDetails } from "./js/productDetails.js";
-// Vieta reikiamų failų importavimui... jei reikia tokių 👀
+// Vieta reikiamų failų importavimui.... jei reikia tokių 👀
 
 /*
 --------------------------------------------------------
