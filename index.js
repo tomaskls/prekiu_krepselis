@@ -139,4 +139,3 @@ Vieneto kaina | 0.14 Eur
 Viso mokėti   | 3.22 Eur
 ------------------------
 */
-
