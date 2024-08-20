@@ -1,15 +1,21 @@
-export function productDetails(a, b) {
-    const produktas = a.find(item => item.id === b);
+export function productDetails(list, id) {
+    const produktas = list.find(item => item.id === id);
     if (!produktas) {
-        return `Prekė, su ID: ${b} neegzistuoja.`
+        return `Prekė, su ID: ${id} neegzistuoja.`;
     }
    
-    let visoKaina = produktas.amount * produktas.unitPrice / 100
-    let vntKaina = produktas.unitPrice / 100
-    let lineH = '-'.repeat(44)
-    let line1 = lineH + '\n' + 'Prekės informacija\n' + lineH + '\n';
-       
-        line1 += `ID          |  ${produktas.id} \n`+ `Pavadinimas | ${produktas.name}\n`+ `Kiekis      | ${produktas.amount} vnt\n` + `vnt kaina   | ${vntKaina.toFixed(2)} Eur\n` + `Viso mokėti | ${visoKaina.toFixed(2)} Eur\n` + lineH;
-        
-  return line1 
+    const visoKaina = (produktas.amount * produktas.unitPrice / 100).toFixed(2) + ' Eur' ;
+    const vntKaina = (produktas.unitPrice / 100).toFixed(2) + ' Eur';
+    const lineH = '-'.repeat(44);
+  
+  return `
+  ${lineH}
+  Prekės informacija
+  ${lineH}
+  ID          |  ${produktas.id}
+  Pavadinimas | ${produktas.name}
+  Kiekis      | ${produktas.amount} vnt
+  vnt kaina   | ${vntKaina}
+  Viso mokėti | ${visoKaina}
+  ${lineH}`;
 }
