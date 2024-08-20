@@ -1,21 +1,22 @@
 export function productDetails(list, id) {
-    const produktas = list.find(item => item.id === id);
-    if (!produktas) {
+    const product = list.find(item => item.id === id);
+    if (!product) {
         return `Prekė, su ID: ${id} neegzistuoja.`;
     }
    
-    const visoKaina = (produktas.amount * produktas.unitPrice / 100).toFixed(2) + ' Eur' ;
-    const vntKaina = (produktas.unitPrice / 100).toFixed(2) + ' Eur';
-    const lineH = '-'.repeat(44);
+    
+    const totalPrice = (product.amount * product.unitPrice / 100).toFixed(2) + ' Eur' ;
+    const unitPrice = (product.unitPrice / 100).toFixed(2) + ' Eur';
+    const lineH = '-'.repeat(34);
   
   return `
   ${lineH}
   Prekės informacija
   ${lineH}
-  ID          |  ${produktas.id}
-  Pavadinimas | ${produktas.name}
-  Kiekis      | ${produktas.amount} vnt
-  vnt kaina   | ${vntKaina}
-  Viso mokėti | ${visoKaina}
+  ID          |  ${product.id}
+  Pavadinimas | ${product.name}
+  Kiekis      | ${product.amount} vnt
+  vnt kaina   | ${unitPrice}
+  Viso mokėti | ${totalPrice}
   ${lineH}`;
 }
