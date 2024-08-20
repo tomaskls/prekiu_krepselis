@@ -13,7 +13,7 @@ export function productDetails(list, id) {
   ${lineH}
   Prekės informacija
   ${lineH}
-  ID          |  ${product.id}
+  ID          | ${product.id}
   Pavadinimas | ${product.name}
   Kiekis      | ${product.amount} vnt
   vnt kaina   | ${unitPrice}
