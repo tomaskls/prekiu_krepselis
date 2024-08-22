@@ -1,9 +1,9 @@
 export function shoppingList(list) {
  
-  const maxLengthName = list.reduce((maxLength, item) => Math.max(maxLength, item.name.length), 11);
-  const maxLengthAmount = list.reduce((maxLength, item) => Math.max(maxLength, item.amount.toString().length), 6) + 4;
-  const maxLengthPrice = list.reduce((maxLength, item) => Math.max(maxLength, item.unitPrice.toString().length), 13);
-  const maxLengthTotalPrice = list.reduce((maxLength, item) => Math.max(maxLength, (item.unitPrice * item.amount).toString().length), 11) + 4;
+  const maxLengthName =  Math.max(...list.map(item => item.name.length),11);
+  const maxLengthAmount = Math.max(...list.map(item => item.amount.toString().length),6) + 4;
+  const maxLengthPrice = Math.max(...list.map(item => item.unitPrice.toString().length),13);
+  const maxLengthTotalPrice = Math.max(...list.map(item => (item.unitPrice * item.amount).toString().length),11) + 4;
   const maxLengthId = list.length.toString().length;
   const hLine = '-'.repeat(maxLengthId + maxLengthName +maxLengthAmount + maxLengthPrice + maxLengthTotalPrice + 15); 
 
