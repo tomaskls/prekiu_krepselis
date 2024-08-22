@@ -6,7 +6,7 @@ export function shoppingList(list) {
   const maxLengthTotalPrice = Math.max(...list.map(item => (item.unitPrice * item.amount).toString().length),11) + 4;
   const maxLengthId = list.length.toString().length;
   const hLine = '-'.repeat(maxLengthId + maxLengthName +maxLengthAmount + maxLengthPrice + maxLengthTotalPrice + 15); 
-
+  
   let line = '';
 
   if (list.length === 0) {
